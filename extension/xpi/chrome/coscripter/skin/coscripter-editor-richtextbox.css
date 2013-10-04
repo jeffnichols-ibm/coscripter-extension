@@ -1,0 +1,335 @@
+/*
+This Program contains software licensed pursuant to the following: 
+MOZILLA PUBLIC LICENSE
+Version 1.1
+The contents of this file are subject to the Mozilla Public License
+Version 1.1 (the "License"); you may not use this file except in
+compliance with the License. You may obtain a copy of the License at
+http://www.mozilla.org/MPL/
+
+Software distributed under the License is distributed on an "AS IS"
+basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+License for the specific language governing rights and limitations
+under the License.
+The Original Code is IBM.
+The Initial Developer of the Original Code is IBM Corporation.
+Portions created by IBM Corporation are Copyright (C) 2007
+IBM Corporation. All Rights Reserved.
+Contributor(s): Greg Little, Allen Cypher (acypher@us.ibm.com), Tessa Lau, Clemens Drews, James Lin, Jeffrey Nichols, Eser Kandogan, Jeffrey Wong, Gaston Cangiano.
+
+This Program also contains a code package known as developer.mozilla.org sample code that is licensed pursuant to the license listed below. 
+developer.mozilla.org sample code 
+The program known as developer.mozilla.org sample code is licensed under the terms below. Those terms are reproduced below for your reference.
+
+The MIT License
+Copyright (c) 2007 Mozilla
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions: 
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software. 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+.outerbox {
+   cursor: default;
+   padding: 0px 0px 0px 0px;
+   margin: 0px 0px 0px 0px;
+   cursor: pointer;
+}
+	
+
+
+
+.outerbox.editing .cursor {
+	display: inline;
+}
+
+.outerbox .cursor {
+	display: none;
+}
+
+.outerbox.enable {
+}
+
+.outerbox.enable.error {
+}
+
+.outerbox.disable {
+   border-color: #999999;
+   -moz-opacity:.50;
+   opacity:.50;
+}
+
+.toggler {
+   border-style:none;
+   position: relative;
+   left: 0px;
+   top: 0px;
+   cursor: pointer;
+   width: 20px;
+   height: 20px;
+   display:none;
+}
+
+
+.richtextbox {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+   font-family: arial;
+}
+
+.richtextbox.enable {
+   color: #000000;
+}
+
+
+
+.sample {
+}
+
+.richtextbox.disable {
+   color: #999999;
+   -moz-opacity:.50;
+   opacity:.50;
+}
+
+
+
+.optionsbox {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 200px;
+  z-index: 101;
+  background-color: #316AC5;
+  border: 1px solid #000000;
+  padding-right: 1px;
+  overflow: auto;
+  font-family: tahoma;
+  font-size: 12;
+}
+
+.visible {
+  visibility:visible;
+}
+
+.invisible {
+  visibility:hidden;
+}
+
+.blink {
+  text-decoration: blink;
+}
+	
+.cursor.selector {
+  background: url("../skin/images/selector.gif");
+  z-index: 103;
+  cursor: pointer;
+}
+
+.word{
+ 
+}
+
+.match{
+  color: #F06600;
+}
+
+
+.matchingtext {
+  font-weight: bold;
+}
+
+.option {
+  border-style: solid;
+  border-width: 0px;
+  padding-left: 2px;
+  background: #FFFFFF;
+  color: #F06600;
+  cursor: pointer;
+}
+
+.char {
+  font-weight: normal;
+  height: 19px;
+  padding: 0;
+  margin: 0;
+}
+	
+.selection {
+  color: #FFFFFF;
+  background: #316AC5;
+}
+
+.line {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 30px;
+  padding-right: 0px;
+  min-height: 19px;
+  background-position: 0px 4px;
+  -moz-user-select: none;
+  cursor: pointer;
+  border: 3px solid transparent;
+}
+
+
+
+.lineinfo {
+  color: black;
+  font-family: tahoma;
+  font-size: 9;
+  padding-left: 14px;
+  padding-right: 0px;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-left: 2px;
+  float: left;
+  width: 20px;
+  font-weight: bold;
+  position: relative;
+  left: 0px;
+  height: 19px;
+  cursor: pointer;
+  background-position: 0px 0px;
+}
+
+.line[indent="1"] {
+  padding-left: 50px;
+  background-position: 10px 4px;
+}
+
+.line[indent="2"] {
+  padding-left: 70px;
+  background-position: 30px 4px;
+}
+
+.line[indent="3"] {
+  padding-left: 90px;
+  background-position: 50px 4px;
+}
+
+.line[indent="4"] {
+  padding-left: 110px;
+  background-position: 70px 4px;
+}
+
+.line[indent="5"] {
+  padding-left: 130px;
+  background-position: 90px 4px;
+}
+
+
+.line.current.closed {
+  background-image: url("images/arrow-right.gif");
+  cursor: pointer;
+}
+
+.line.current.open {
+  background-image: url("images/arrow-down.gif");
+  cursor: pointer;
+}
+
+
+.line.subline {
+  display: none;
+}
+
+.line.subline.open {
+  display: inline;
+}
+
+	
+.lineinfo.error {
+  color: white;
+  background-color: red;
+  font-weight: bolder;
+  text-decoration: blink;
+  cursor: help;
+}
+
+.outerbox.editing .line.current {
+	background-color: #FFFFFF;
+	border: 3px solid green;
+}
+
+.outerbox.editing .line.current .word{
+	cursor: text;
+}
+
+.outerbox.editing .line.current .char{
+    cursor: text;
+}
+
+.outerbox.editing .line.current.selection {
+	background-color: #316AC5;
+	color: #FFFFFF;
+	border: 3px solid #316AC5;
+}
+
+.line.selection {
+	background-color: #316AC5;
+	color: #FFFFFF;
+}
+
+.outerbox.editing .line {
+	cursor: pointer;
+}
+
+.line .linewidget {
+  display: none;
+}
+
+.line.current .linewidget.show {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 32px;
+  height: 19px;
+  background-image: url("images/koala-little.gif");
+  cursor: pointer;
+  z-index:1;
+}
+
+.linewidgetpopup {
+  display: block;
+  position: absolute;
+  z-index:2;
+  right:30px;
+  width: 200px;
+  border: 1px solid black;
+  background-color: white;
+  opacity: .90;
+  color: black;
+}
+
+.action {
+  color: blue;
+}
+
+.object {
+  color: green;
+}
+
+.example {
+  color: cyan;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline;
+}
+

@@ -1,0 +1,49 @@
+<!ENTITY coscripter.label "CoScripter">
+<!ENTITY button.new "New">
+<!ENTITY button.new.alt "New script">
+<!ENTITY button.new.tip "Create a new script">
+<!ENTITY button.open "Open">
+<!ENTITY button.open.tip "Open a script">
+<!ENTITY button.step "Step">
+<!ENTITY button.step.tip "Execute the next step">
+<!ENTITY button.run "Run">
+<!ENTITY button.run.tip "Run all steps">
+<!ENTITY button.stop "Stop">
+<!ENTITY button.stop.tip "Stop running">
+<!ENTITY button.record "Record">
+<!ENTITY button.record.tip "Record your web actions">
+<!ENTITY button.createRows "More Rows">
+<!ENTITY button.createRows.tip "Repeat to create more table rows">
+<!ENTITY button.save "Save">
+<!ENTITY button.save.tip "Save a script">
+<!ENTITY button.wikiSave.tip "Save script to the Wiki">
+<!ENTITY button.edit "Edit">
+<!ENTITY button.edit.tip "Edit this script">
+<!ENTITY button.cancel "Cancel">
+<!ENTITY button.cancel.tip "Cancel and return to main menu">
+<!ENTITY button.wiki "Wiki">
+<!ENTITY button.wiki.tip "Display wiki or current script in main window">
+<!ENTITY button.home "Home">
+<!ENTITY button.welcome "Display welcome page">
+<!ENTITY welcome.label "Welcome to CoScripter">
+<!ENTITY title.label "Title: ">
+<!ENTITY checkbox.private "Private">
+<!ENTITY checkbox.private.tip "Toggle whether this script is public or private on the wiki">
+<!ENTITY checkbox.saveExampleData "Save example data">
+<!ENTITY checkbox.saveExampleData.tip "Save script with my database values as examples">
+<!ENTITY button.okSave "OK">
+<!ENTITY button.okSave.tip "Save">
+<!ENTITY button.cancel "Cancel">
+<!ENTITY edit.tip "Click on a line to edit script">
+<!ENTITY editShort.tip "Click to edit">
+<!ENTITY personalDBTab "Personal DB">
+<!ENTITY personalDBTab.info "Personal Database">
+<!ENTITY scriptvarsTab "Params">
+<!ENTITY scriptvarsTab.info "Parameters passed to the script">
+<!ENTITY localDBTab "Local Database">
+<!ENTITY bluepagesTab "BP">
+<!ENTITY bluepagesTab.info "BluePages">
+<!ENTITY actionHistoryTab "Actions">
+<!ENTITY actionHistoryTab.info "Action History">
+<!ENTITY button.towiki.tip "View this script in the wiki"> 
+<!ENTITY titleText "Script title">

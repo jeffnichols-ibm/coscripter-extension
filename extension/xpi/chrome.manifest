@@ -1,0 +1,29 @@
+#
+# Chrome Manifest file (for Firefox 1.1+)
+#
+
+# WARNING: don't forget the '/' at the end of the paths or it won't work!!
+
+# NOTE: if you want to change the name of the extension,
+#   I think you need to change the instances of "coscripter" in here to the new name,
+#   as well as in the install.rdf file
+
+content    coscripter	chrome/coscripter/content/
+content    coscripter   chrome/coscripter/content/ contentaccessible=yes
+
+overlay    chrome://browser/content/browser.xul chrome://coscripter/content/coscripter-browser-overlay.xul
+overlay    chrome://browser/content/browser.xul chrome://coscripter/content/coscripter-scratch-space-browser-overlay.xul
+
+resource	coscripter	modules/
+
+locale	coscripter	en-US	chrome/coscripter/locale/en-US/
+skin coscripter classic/1.0 chrome/coscripter/skin/
+
+
+component {faeaffb2-3ec0-4172-9863-3503f30ef543} components/coscripter-run-security-bypass-protocol.js
+contract @mozilla.org/network/protocol;1?name=coscriptrun {faeaffb2-3ec0-4172-9863-3503f30ef543} 
+category profile-after-change CoScripterRun @mozilla.org/network/protocol;1?name=coscriptrun 
+
+component {76c60d3b-786f-4b8e-bfe4-678d42132995} components/coscripter-security-bypass-protocol.js
+contract @mozilla.org/network/protocol;1?name=coscript {76c60d3b-786f-4b8e-bfe4-678d42132995}
+category profile-after-change CoScripter @mozilla.org/network/protocol;1?name=coscript

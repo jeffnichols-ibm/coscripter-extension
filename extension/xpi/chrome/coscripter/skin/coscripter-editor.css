@@ -1,0 +1,174 @@
+/*
+This Program contains software licensed pursuant to the following: 
+MOZILLA PUBLIC LICENSE
+Version 1.1
+The contents of this file are subject to the Mozilla Public License
+Version 1.1 (the "License"); you may not use this file except in
+compliance with the License. You may obtain a copy of the License at
+http://www.mozilla.org/MPL/
+
+Software distributed under the License is distributed on an "AS IS"
+basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+License for the specific language governing rights and limitations
+under the License.
+The Original Code is IBM.
+The Initial Developer of the Original Code is IBM Corporation.
+Portions created by IBM Corporation are Copyright (C) 2007
+IBM Corporation. All Rights Reserved.
+Contributor(s): Greg Little, Allen Cypher (acypher@us.ibm.com), Tessa Lau, Clemens Drews, James Lin, Jeffrey Nichols, Eser Kandogan, Jeffrey Wong, Gaston Cangiano.
+
+This Program also contains a code package known as developer.mozilla.org sample code that is licensed pursuant to the license listed below. 
+developer.mozilla.org sample code 
+The program known as developer.mozilla.org sample code is licensed under the terms below. Those terms are reproduced below for your reference.
+
+The MIT License
+Copyright (c) 2007 Mozilla
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions: 
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software. 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+.procedureInteractor {
+	background-color: #FFFFE7;
+	padding: 0.5em;
+	border: 1px solid #505050;
+	width:100%;
+	background-color: #FFFFE7;
+}
+
+body { 
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	margin: 0px;
+	padding: 0px 0px;
+	background-color: #EEEEEE;
+}
+
+/* Turn the background pink for private scripts */
+.private_script {
+    background-color: #f4d4e5;
+}
+
+.public_script {
+	background-color: #EEEEEE;
+}
+
+.executed {
+	color: #AAAAAA;
+}
+
+.executed .word {
+	color: #AAAAAA;
+}
+
+.executed .char {
+	color: #AAAAAA;
+}
+
+.line.current .word.hilite {
+	color: #0000FF;
+	font-weight : bold;
+}
+
+.line.current .word.hilite.error {
+	text-decoration: underline;
+	color: #FF0000;
+	font-weight : bold;
+}
+
+.comment .word {
+	font-style: italic;
+}
+
+.comment .word.selection {
+	color: #FFFFFF;
+}
+
+.comment .char {
+	font-style: italic;
+}
+
+.comment .char.selection {
+	color: #FFFFFF;
+}
+
+.line[indent].comment {
+	background-image: url("images/comment.gif");
+	background-repeat: no-repeat;
+}
+
+.line[indent] {
+	background-image: url("images/bullet.gif");
+	background-repeat: no-repeat;
+}
+
+.line[indent].selection {
+	background-image: url("images/bullet-selected.gif");
+	background-repeat: no-repeat;
+}
+
+.line[indent].current {
+	background-image: url("images/current-bullet.gif");
+	cursor: pointer;
+	background-repeat: no-repeat;
+}
+
+.line[indent].current.editing {
+	background-image: url("images/current-bullet-editing.gif");
+	cursor: pointer;
+	background-repeat: no-repeat;
+}
+
+.line[indent].current.selection {
+	background-image: url("images/current-bullet-selected.gif");
+	cursor: pointer;
+	background-repeat: no-repeat;
+}
+
+.line.current  {
+	background-image: url("images/current.gif");
+	cursor: pointer;
+	background-repeat: no-repeat;
+}
+
+.line.current.editing  {
+	background-image: url("images/current-editing.gif");
+	cursor: pointer;
+	background-repeat: no-repeat;
+}
+
+.line.current.selection  {
+	background-image: url("images/current-selected.gif");
+	cursor: pointer;
+	background-repeat: no-repeat;
+}
+
+.line.history {
+  background-color: gray;
+}
+
+.outerbox.editing .line.current {
+    color: black;
+}
+
+.outerbox .line.current {
+    color: green;
+}
+
+.line[indent].current.executing {
+	background-image: url("images/executing.gif");
+	cursor: pointer;
+	background-repeat: no-repeat;
+}
+

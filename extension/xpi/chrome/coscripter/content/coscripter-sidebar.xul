@@ -1,0 +1,303 @@
+<?xml-stylesheet href="chrome://browser/skin/" type="text/css" ?>
+<!DOCTYPE page SYSTEM "chrome://coscripter/locale/coscripter-sidebar.dtd">
+<!-- 
+This Program contains software licensed pursuant to the following: 
+MOZILLA PUBLIC LICENSE
+Version 1.1
+The contents of this file are subject to the Mozilla Public License
+Version 1.1 (the "License"); you may not use this file except in
+compliance with the License. You may obtain a copy of the License at
+http://www.mozilla.org/MPL/
+
+Software distributed under the License is distributed on an "AS IS"
+basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+License for the specific language governing rights and limitations
+under the License.
+The Original Code is IBM.
+The Initial Developer of the Original Code is IBM Corporation.
+Portions created by IBM Corporation are Copyright (C) 2007
+IBM Corporation. All Rights Reserved.
+Contributor(s): Greg Little, Allen Cypher (acypher@us.ibm.com), Tessa Lau, Clemens Drews, James Lin, Jeffrey Nichols, Eser Kandogan, Jeffrey Wong, Gaston Cangiano, Jeffrey Bigham.
+
+This Program also contains a code package known as 'inheritance methods' that is licensed pursuant to the license listed below. 
+inheritance methods
+The program known as 'inheritance methods' is licensed under the terms below. Those terms are reproduced below for your reference.
+
+Copyright (c) 2000-2004, Kevin Lindsey
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    - Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+
+    - Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+    - Neither the name of this software nor the names of its contributors
+      may be used to endorse or promote products derived from this software
+      without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+This Program also contains a code package known as developer.mozilla.org sample code that is licensed pursuant to the license listed below. 
+developer.mozilla.org sample code 
+The program known as developer.mozilla.org sample code is licensed under the terms below. Those terms are reproduced below for your reference.
+
+The MIT License
+Copyright (c) 2007 Mozilla
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions: 
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software. 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<?xml-stylesheet href="chrome://browser/skin/" type="text/css" ?>
+<?xml-stylesheet href="chrome://coscripter/skin/sidebar.css" type="text/css" ?>
+
+<page
+	title="coscripter-sidebar"
+	id="coscripter-sidebar"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="onLoad()"
+	onunload="onUnload()">
+	
+	<script src="coscripter-sidebar.js" />
+	<script src="coscripter-command-processor.js" />
+	<script src="coscripter-local-save.js" />
+	<script src="coscripter-context.js" />
+	<script src="coscripter-dom-utils.js" />
+	<script src="coscripter-editor-richtextbox.js" />
+	<script src="coscripter-scratch-space-sidebar.js" />
+	<!--script src="dojo-release-1.2.0-src/dojo/dojo.js" /-->
+	
+	<html:canvas id="offscreen" flex="0" hidden="true" style="display: none;"/>	
+	<!-- html:canvas id="canvasSmallNoHighlight" flex="0" hidden="true" style="display: none;"/-->	
+	<html:canvas id="canvasSmall" flex="0" hidden="true" style="display: none;"/>	
+	<html:canvas id="canvasFull" flex="0" hidden="true" style="display: none;"/>	
+
+		
+	<!-- Menu buttons -->
+	<vbox flex="10">
+		<toolbar id="procedure-toolbar" orient="baseline">
+			<toolbarbutton id="new" alt="&button.new.alt;"
+				tooltiptext="&button.new.tip;"
+				oncommand="onNew()"
+				image="chrome://coscripter/skin/images/new.gif"
+				label="&button.new;"
+				accesskey="n"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+			<toolbarbutton id="open" alt="&button.open;"
+				tooltiptext="&button.open.tip;"
+				oncommand="onOpen()"
+				image="chrome://coscripter/skin/images/open-local.gif"
+				label="&button.open;"
+				accesskey="o"
+				hidden="true"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+			<toolbarbutton id="step" alt="&button.step;"
+				tooltiptext="&button.step.tip;"
+				oncommand="onStep()"
+				hidden="true"
+				image="chrome://coscripter/skin/images/step.gif"
+				label="&button.step;"
+				accesskey="s"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+			<toolbarbutton id="run" alt="&button.run;"
+				tooltiptext="&button.run.tip;"
+				oncommand="onRun()"
+				hidden="true"
+				image="chrome://coscripter/skin/images/run.gif"
+				label="&button.run;"
+				accesskey="r"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+			<toolbarbutton id="runAll" alt="&button.run;"
+				tooltiptext="&button.run.tip;"
+				oncommand="onRunAll()"
+				hidden="true"
+				image="chrome://coscripter/skin/images/run_all_rows.gif"
+				label="Run All Rows"
+				accesskey="a"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+			<toolbarbutton id="stop" alt="&button.stop;"
+				tooltiptext="&button.stop.tip;"
+				oncommand="onStop()"
+				hidden="true"
+				image="chrome://coscripter/skin/images/stop.gif"
+				label="&button.stop;"
+				accesskey="p"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+			<toolbarseparator id="recordSeparator"/>
+			<toolbarbutton id="record" alt="&button.record;"
+				tooltiptext="&button.record.tip;"
+				oncommand="onRecord()"
+				hidden="true"
+				image="chrome://coscripter/skin/images/record-grey.gif"
+				label="&button.record;"
+				accesskey="e"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+			<!-- toolbarseparator id="iterateSeparator"/-->
+			<toolbarbutton id="createRows" alt="&button.createRows;"
+				tooltiptext="&button.createRows.tip;"
+				oncommand="onCreateRows()"
+				hidden="true"
+				image="chrome://coscripter/skin/images/record-grey.gif"
+				label="&button.createRows;"
+				accesskey="c"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+			<toolbarseparator id="stepSeparator"/>
+			<toolbarbutton id="save" alt="&button.save;"
+				tooltiptext="&button.save.tip;"
+				oncommand="onSave()"
+				hidden="true"
+				image="chrome://coscripter/skin/images/save-wiki.gif"
+				label="&button.save;"
+				accesskey="v"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+			<toolbarbutton id="cancel" alt="&button.cancel;"
+				tooltiptext="&button.cancel.tip;"
+				oncommand="onCancel()"
+				hidden="true"
+				image="chrome://coscripter/skin/images/cancel.gif"
+				label="&button.cancel;"
+				accesskey="c"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+			
+			<toolbarspring />
+			
+			<toolbarbutton id="home"
+				alt="&button.welcome;"
+				tooltiptext="&button.welcome;"
+				oncommand="onHome()"
+				image="chrome://coscripter/skin/images/feathers-button.gif"
+				label="&button.home;"
+				accesskey="m"
+				style="-moz-box-orient: vertical; -moz-user-focus: normal;"/>
+		</toolbar>
+
+		<label id="statusLabel" class="status" style="color: black;" value="&welcome.label;" crop="end"></label>
+
+		<!-- Script Area -->
+		<vbox id="scriptArea" flex="20">
+			<iframe id="serverWelcomePage" flex="10" collapsed="false"
+				src="chrome://coscripter/content/coscripter-welcome.xhtml" />
+			<iframe id="localWelcomePage" flex="10" collapsed="true"
+				src="chrome://coscripter/content/coscripter-welcome-local.xhtml" />
+			<vbox id="procedureInteractor" flex="10" collapsed="true">
+				<vbox id="savePanel" style="background-color: #DDDDDD;">
+					<spacer height="1"/>
+					<hbox pack="start">
+							<textbox cols="40" rows="1"
+								id="procedureTitle" wrap="true"
+								multiline="true"
+								flex="1"/>
+							<button style="min-width: 2px;"
+								tooltiptext="&checkbox.private.tip;"
+								id="procedurePrivate"
+								oncommand="togglePrivate()"
+								image="chrome://coscripter/skin/images/unlock.gif"
+								type="checkbox" checked="false"/>
+							<button
+								style="min-width: 2px;"
+								tooltiptext="&button.towiki.tip;"
+								id="toWiki"
+								oncommand="viewScriptInWiki()"
+								image="chrome://coscripter/skin/images/to-wiki.gif"
+								/>
+
+					</hbox>
+					<spacer height="1"/>
+				</vbox>
+
+				<browser id="procedureInteractorBrowser" flex="10"
+					collapsed="false" tooltip="edittip"
+					type="content-targetable"
+					src="chrome://coscripter/content/interactor.html"/>
+				<tooltip id="edittip" orient="vertical" style="background-color: #33DD00;">
+					<label value="&edit.tip;"/>
+				</tooltip>
+			</vbox>
+		</vbox>
+
+		<splitter/>
+
+		<!-- Tab Area -->
+		<vbox id="dbbox" flex="2">
+			<tabbox flex="100">
+				<tabs id="dbtabs" flex="1">
+					<tab id="personaldbtab" tooltiptext="&personalDBTab.info;" selected="true">
+						<label value="&personalDBTab;"/></tab>
+
+					<tab collapsed="true" id="scriptvarstab"
+						tooltiptext="&scriptvarsTab.info;">
+						<label value="&scriptvarsTab;"/></tab>
+						
+					<tab id="scratchtab">
+						<label value="Tables"/></tab>
+					
+					<tab id="activitytab" collapsed="true"
+						tooltiptext="&actionHistoryTab.info;">
+						<label value="&actionHistoryTab;"/>
+					</tab>
+
+				</tabs>
+				<tabpanels id="dbtabpanels" flex="100">
+					<textbox id="personaldb" wrap="true" multiline="true"
+							flex="1"/>
+							
+					<textbox id="scriptvars" wrap="true" multiline="true"
+							flex="1" readonly="true"/>
+
+					<vbox id="scratchtabpanel" flex="1">
+						<listbox id="scratchspaces" rows="1" flex="1">  <!-- rows="1" -->
+							<!-- This list is populated after the sidebar is loaded. -->
+							<listitem label="Loading..." disabled="true"/>
+						</listbox>
+			
+						<hbox>
+							<button id="openScratchSpace" label="Open" disabled="true"/>
+							<button id="deleteScratchSpace" label="Delete" disabled="true"/>
+							<spacer flex="1" />
+							<button id="newScratchSpace" label="New Table..."/>
+						</hbox>
+					</vbox>
+					
+					<browser id="activitydata" hidden="true" wrap="true"
+							type="content-targetable"
+							multiline="true" flex="1" readonly="true"
+							 />
+				</tabpanels>
+			</tabbox>
+			<textbox hidden="true" id="output" wrap="false" multiline="true" flex="1" />
+		</vbox>
+		
+	</vbox>	<!-- end of entire sidebar -->
+	
+	<stringbundleset id="stringbundleset-coscripter">
+		<stringbundle id="bundle-coscripter-sidebar" src="chrome://coscripter/locale/coscripter-sidebar.properties" />		
+	</stringbundleset>
+
+</page>
+<!-- vim:set ts=4: -->

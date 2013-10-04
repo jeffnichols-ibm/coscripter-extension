@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
+[<!ENTITY % welcomeDTD SYSTEM "chrome://coscripter/locale/coscripter-welcome.dtd" > %welcomeDTD;]>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- (c) Copyright IBM Corp.  2006, 2007 -->
+<head>
+<link rel="stylesheet" type="text/css" href="chrome://coscripter/skin/welcome.css"/>
+<script type="text/javascript" src="chrome://coscripter/content/nike/et4a.js">
+</script>
+<script type="text/javascript" src="chrome://coscripter/content/coscripter-welcome.js">
+</script>
+
+</head>
+<body id="welcomePageBody">
+
+<div id="errortext"></div>
+
+<div class="introduction">
+<p>
+&visitPre;
+<a href="javascript:openWikiPage()" id="coscripterwebsite">&coscripterWebsite;</a>
+</p>
+<form onsubmit="return searchScripts('&coscripterWebsite;', document.getElementById('scriptsearch').value);">
+<input id="scriptsearch" type="text"/><input class="coscripter-search" type="submit" value="&search;"/>
+</form>
+</div>
+
+<h1>&myLocalScripts;</h1>
+<div id='mineDiv'>
+<table width="100%" id="mylocalscripts"/>
+</div>
+
+
+<script type="text/javascript">
+<![CDATA[
+    try{
+ 	Components.utils.import("resource://coscripter-platform/component-registry.js");
+	var u = registry.utils();
+	var coscripter = u.getMainChromeWindow(window).coscripter;
+	
+	function cb_recent(successP, statuscode, data, template,
+	    login_url) {
+	    if (statuscode >= 200 && statuscode < 300) {
+		// don't do anything; it worked
+	    } else if (statuscode >= 400 && statuscode < 500) {
+		data = [{'title' : 'Log in to see your scripts',
+		    'coscript-json-url' : 
+		    'javascript:coscripter.loadUrlIntoMainBrowser("' + login_url + '")'}];
+	    } else {
+		data = [{'title' : 'Error reading from server: ' + statuscode}]
+	    }
+	    new IBM.ET4A.Template(template).bind(data);
+	}
+
+	function makeMoreLink(data, target_length, url) {
+	    // target length is 5
+	    // data length is anywhere from 0-6
+	    if (data.length > target_length) {
+		data = data.slice(0, target_length - 1);
+		data[data.length] = [{'title': '(more)',
+		    'coscript-json-url' :
+		    'javascript:coscripter.loadUrlIntoMainBrowser("' + url +
+		    '")'}];
+	    }
+	    return data;
+	}
+
+	coscripter.hasKoalescenceConnection(function(serverVars) {
+		return;
+	})
+    }catch(e){
+	var errortext = document.getElementById('errortext');
+	errortext.innerHTML = 'Error: ' + e;
+	dump("Error in local startpage: " + e.toSource() + "\n");
+    }
+    
+    function openWikiPage() { 
+    try{
+	     	Components.utils.import("resource://coscripter-platform/component-registry.js");
+	        var u = registry.utils();
+		var serverURL = u.getKoalescenceURL();
+		u.getCurrentContentBrowser(window).loadURI(serverURL);
+    }catch(e){
+		var errortext = document.getElementById('errortext');
+		errortext.innerHTML = 'Error: ' + e;
+		dump("Error in openWikiPage: " + e + "\n");
+    }
+    }
+]]>
+</script>
+
+</body>
+</html>

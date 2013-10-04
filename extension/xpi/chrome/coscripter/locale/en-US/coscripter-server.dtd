@@ -1,0 +1,7 @@
+<!ENTITY coscripterServer "CoScripter: Modify Server Settings">
+<!ENTITY serverName "Name:">
+<!ENTITY serverNameKey "N">
+<!ENTITY serverURL "Server URL:">
+<!ENTITY serverURLKey "S">
+<!ENTITY notValid "Cannot connect to server. Please check the URL and try again.">
+<!ENTITY notValidTitle "Invalid CoScripter Server">

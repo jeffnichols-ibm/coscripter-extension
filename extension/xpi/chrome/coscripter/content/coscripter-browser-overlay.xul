@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://coscripter/locale/coscripter-browser-overlay.dtd">
+
+<!-- 
+This Program contains software licensed pursuant to the following: 
+MOZILLA PUBLIC LICENSE
+Version 1.1
+The contents of this file are subject to the Mozilla Public License
+Version 1.1 (the "License"); you may not use this file except in
+compliance with the License. You may obtain a copy of the License at
+http://www.mozilla.org/MPL/
+
+Software distributed under the License is distributed on an "AS IS"
+basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+License for the specific language governing rights and limitations
+under the License.
+The Original Code is IBM.
+The Initial Developer of the Original Code is IBM Corporation.
+Portions created by IBM Corporation are Copyright (C) 2007
+IBM Corporation. All Rights Reserved.
+Contributor(s): Greg Little, Allen Cypher (acypher@us.ibm.com), Tessa Lau, Clemens Drews, James Lin, Jeffrey Nichols, Eser Kandogan, Jeffrey Wong, Gaston Cangiano, Jeffrey Bigham.
+
+This Program also contains a code package known as 'inheritance methods' that is licensed pursuant to the license listed below. 
+inheritance methods
+The program known as 'inheritance methods' is licensed under the terms below. Those terms are reproduced below for your reference.
+
+Copyright (c) 2000-2004, Kevin Lindsey
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    - Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+
+    - Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+    - Neither the name of this software nor the names of its contributors
+      may be used to endorse or promote products derived from this software
+      without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+This Program also contains a code package known as developer.mozilla.org sample code that is licensed pursuant to the license listed below. 
+developer.mozilla.org sample code 
+The program known as developer.mozilla.org sample code is licensed under the terms below. Those terms are reproduced below for your reference.
+
+The MIT License
+Copyright (c) 2007 Mozilla
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions: 
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software. 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+
+<!-- The CoScripter extension's chrome.manifest file loads this xul file -->
+<overlay id="coscripter-browser-overlay" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    
+   <!-- most of the javascript code is in here -->
+    <script src="coscripter-statusbar.js" />
+    <script src="coscripter-browser-overlay.js" />
+    <script src="coscripter-content-type-handler.js" />
+    <!--script src="coscripter-dom-utils.js" /-->
+    <!-- commented out until errors are fixed
+	<script src="coscripter-annotate.js" />
+    <script src="coscripter-annotator.js" />
+    <script src="coscripter-instruction-annotator.js" />
+	-->
+    
+    <!-- this is the "CoScripter" option in the tools menu -->
+    <menupopup id="menu_ToolsPopup">
+        <menuitem
+            id          = "coscripter"
+            label       = "&coscripter.label;"	
+			insertafter	= "devToolsSeparator"
+            oncommand   = "coscripter.toggleSidebar('view-coscripter-sidebar')"
+            acceltext   = "&coscripterMenuItem.accesskeylabel;"
+			image       = "chrome://coscripter/skin/images/feathers-icon.gif"
+		/>
+    </menupopup> 
+
+    <menupopup id="menu_ToolsPopup">
+		<menuitem
+            id          = "coscripter-test"
+            label       = "CoScripter Test"
+			insertafter	= "coscripter"
+			oncommand   = "coscripter.toggleSidebar('view-coscripter-testsidebar')"
+            acceltext   = ""
+			hidden		= "true"
+		/>
+    </menupopup> 
+
+    <!-- this is the "View ==> Sidebar ==> CoScripter Ctrl,Alt+K" menu item -->
+    <menupopup id="viewSidebarMenu">
+        <menuitem observes="view-coscripter-sidebar" />
+    </menupopup>
+
+    <!-- I'm not sure why this information couldn't just be put into the menu item above... but I never tried it -->
+	<!-- since this broadcaster has the id used in the toggleSidebar Firefox command,
+		its sidebarurl is the url used when toggleSidebar is called (I think) AC-->
+    <broadcasterset id="mainBroadcasterSet">
+        <broadcaster id="view-coscripter-sidebar"
+            autoCheck="false"
+            label="&coscripter.label;"
+            acceltext="&coscripterMenuItem.accesskeylabel;"
+            type="checkbox"
+            group="sidebar"
+            sidebarurl="chrome://coscripter/content/coscripter-sidebar.xul"
+			sidebartitle="&coscripter.label;"
+            oncommand="coscripter.toggleSidebar('view-coscripter-sidebar');"/>
+      <broadcaster id="view-coscripter-testsidebar"
+            autoCheck="false"
+            label="CoScripter Test"
+            type="checkbox"
+            group="sidebar"
+            sidebarurl="chrome://coscripter/content/coscripter-testsidebar.xul"
+			sidebartitle="CoScripter Test"
+            oncommand="coscripter.toggleSidebar('view-coscripter-testsidebar');"/>
+   
+    </broadcasterset>  
+
+    <!-- this makes the short-cut key work -->
+    <keyset id="mainKeyset">
+        <key key="&coscripterMenuItem.accesskey;" modifiers="control,alt" command="toggle-coscripter-sidebar-visibility" />
+    </keyset>
+    
+
+    <!-- this gets called when the user presses the shortcut key... again, I'm not sure why it couldn't just be there,
+        but this is template code, and I think it was meant for a more sophisticated system -->
+    <commandset id="mainCommandSet">
+        <command id="toggle-coscripter-sidebar-visibility"
+            oncommand="coscripter.toggleSidebar('view-coscripter-sidebar');" />
+    </commandset>
+
+	<!-- this is the toolbar button at the bottom right of the firefox
+	window -->
+	<statusbar id="status-bar">
+		<statusbarpanel id="coscripter-status-panel"
+     		label="&toggleCoScripterSidebar;"
+     		class="statusbarpanel-menu-iconic"
+     		src="chrome://coscripter/skin/images/feathers-icon.gif"
+			tooltiptext="CoScripter" >
+			<menupopup 
+				id="coscripter-statusbar-popup"
+				onpopupshowing="coscripter.statusbar.onPopupShowing()">
+				<menuitem id="coscripter-website"
+					label="Go to CoScripter website"
+					oncommand="coscripter.loadCoScripterWikiHomepage();"
+					/>
+				<menuitem id="coscripter-open-close"
+					label="Toggle CoScripter sidebar"
+					oncommand="coscripter.toggleSidebar('view-coscripter-sidebar');"
+				/>
+				<menuitem id="coscripter-find-related"
+					label="Wish for help on this website"
+					oncommand="coscripter.statusbar.findRelated(window);"
+				/>
+				<menuseparator id="coscripter-related-sep"/>
+				<menuitem id="coscripter-loading"
+					label="Loading..."
+				/>
+				<menuitem id="coscripter-no-related-scripts"
+					label="No scripts for this website"
+					disabled="true"
+				/>
+			</menupopup>
+		</statusbarpanel>
+	</statusbar>
+
+	<popup id="contentAreaContextMenu"
+		onpopupshown="coscripter.showHideContextItems(event);">
+		<menuseparator id="coscripter-contextseparator"/>
+		<menuitem id="coscripter-clip"
+			label="&clipNode;"
+			crop="end"
+			oncommand="coscripter.clipNode(event, document.popupNode);"
+		/>
+	</popup>
+</overlay>

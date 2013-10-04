@@ -1,0 +1,9 @@
+<!ENTITY coscripterSaveOverwrite "CoScripter: overwrite or copy">
+<!ENTITY overwriteWarning "This script already exists on the server.  Do
+you want to overwrite the previous version, or make a new copy?">
+<!ENTITY overwrite.label "Overwrite">
+<!ENTITY savecopy.label "Make a copy">
+<!ENTITY savecopy.info "Create a new copy of the script on the server.  The
+original script will be left intact. The new script will be owned by you.">
+<!ENTITY title "New title:">
+<!ENTITY changemsg "Message:">

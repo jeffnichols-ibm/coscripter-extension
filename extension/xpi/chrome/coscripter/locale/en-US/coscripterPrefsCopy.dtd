@@ -1,0 +1,44 @@
+<!ENTITY coscripterPreferences "CoScripter Preferences">
+<!ENTITY serverTab "Server">
+<!ENTITY loggingTab "Logging">
+<!ENTITY recordingTab "Recording">
+<!ENTITY debuggingTab "Debugging">
+<!ENTITY displayTab "Experimental">
+<!ENTITY saveTab "Save">
+<!ENTITY urlForCoScripterServer.label "URL for CoScripter server:">
+<!ENTITY urlForCoScripterApi.label "URL for CoScripter API:">
+<!ENTITY enableLocalSave "Enable Local Save">
+<!ENTITY enableLocalSave.tip "Scripts will be saved on your computer, never on the CoScripter website">
+<!ENTITY displayLog.label "Show Log">
+<!ENTITY displayLog.info "See what information has recently been sent to the CoScripter Logger">
+<!ENTITY enableLogging.label "enable logging">
+<!ENTITY remoteLogging.label "remote logging">
+<!ENTITY recordActionHistory.label "Log actions:">
+<!ENTITY recordActionHistory.label.tip "Help CoScripter research by logging your anonymized actions on the CoScripter server.">
+<!ENTITY recordActionHistory.never "Never">
+<!ENTITY recordActionHistory.sidebar "When CoScripter sidebar is open">
+<!ENTITY recordActionHistory.always "Always">
+<!ENTITY recordActionHistory.always.tip "Whenever Firefox is running">
+<!ENTITY showActionHistoryTab.label "Show Action History tab">
+<!ENTITY enableRegression "Enable simple regression database">
+<!ENTITY edit "Edit...">
+<!ENTITY edit.accesskey "E">
+<!ENTITY setDef "Set as Default">
+<!ENTITY setDef.accesskey "S">
+<!ENTITY addNew "Add...">
+<!ENTITY addNew.accesskey "A">
+<!ENTITY delete "Delete">
+<!ENTITY delete.accesskey "D">
+<!ENTITY showBubbleHelp "Show bubble help">
+<!ENTITY showMashupTables "Show mashup tables">
+<!ENTITY saveWhere "Location to save scripts">
+<!ENTITY saveWhere.server "On the CoScripter server">
+<!ENTITY saveWhere.local "Locally, on this computer">
+<!ENTITY recordingOptions "">
+<!ENTITY recordingOptions.recordAllClicks "Record all clicks">
+<!ENTITY recordingOptions.recordAllClicks.description "Record all clicks, even if they do not cause anything to happen. If CoScripter cannot identify an element, it will be recorded as an XPath. This is sometimes useful for nonstandard, custom widgets.">
+<!ENTITY recordingOptions.recordDialogs "Record actions in dialog boxes">
+<!ENTITY recordingOptions. recordDialogs.description "Record actions that take place in a dialog box. Executing these actions doesn't work perfectly: sometimes CoScripter runs the script a second time.">
+<!ENTITY saveWhere.server "On the CoScripter server">
+<!ENTITY defaultExplanation "The default server determines where newly created scripts are saved and which scripts are listed in the sidebar.">
+

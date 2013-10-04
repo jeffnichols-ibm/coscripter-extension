@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+  xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:name>CoScripter</em:name>
+    <em:description>Capture, share, and automate business processes</em:description>
+    <em:id>{353396a4-6910-4b95-9ec8-37978867618b}</em:id>
+    <em:creator>CoScripter Team</em:creator>
+    <em:contributor>Allen Cypher</em:contributor>
+    <em:contributor>Clemens Drews</em:contributor>
+    <em:contributor>Eser Kandogan</em:contributor>
+    <em:contributor>Tessa Lau</em:contributor>
+    <em:contributor>James Lin</em:contributor>
+    <em:contributor>Greg Little</em:contributor>
+    <em:contributor>Jeffrey Nichols</em:contributor>
+    <em:homepageURL>http://coscripter.researchlabs.ibm.com/</em:homepageURL>
+    <em:optionsURL>chrome://coscripter/content/coscripterPrefs.xul</em:optionsURL>
+    <em:updateURL>https://coscripter.researchlabs.ibm.com/download/FirefoxExtensionXPI/update.rdf</em:updateURL>
+
+    <em:version>2.2.7</em:version>
+    <!-- Target Application this extension can install into, 
+         with minimum and maximum supported versions. --> 
+    <em:targetApplication>
+      <!-- Firefox -->
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>3.0.0</em:minVersion>
+        <em:maxVersion>99.0.0.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:requires>
+      <Description>
+        <em:id>platform@coscripter.ibm.com</em:id>
+        <em:minVersion>2.0.0</em:minVersion>
+        <em:maxVersion>2.*</em:maxVersion>
+      </Description>
+      <Description>
+        <em:id>yule@coscripter.ibm.com</em:id>
+        <em:minVersion>2.0.0</em:minVersion>
+        <em:maxVersion>2.*</em:maxVersion>
+      </Description>
+     </em:requires>
+  </Description>
+</RDF>

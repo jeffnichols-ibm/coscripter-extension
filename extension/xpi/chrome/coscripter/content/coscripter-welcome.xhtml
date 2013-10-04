@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
+[<!ENTITY % welcomeDTD SYSTEM "chrome://coscripter/locale/coscripter-welcome.dtd" > %welcomeDTD;]>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- (c) Copyright IBM Corp.  2006, 2007 -->
+<head>
+<link rel="stylesheet" type="text/css" href="chrome://coscripter/skin/welcome.css"/>
+<script type="text/javascript" src="chrome://coscripter/content/nike/et4a.js">
+</script>
+<script type="text/javascript" src="chrome://coscripter/content/coscripter-welcome.js">
+</script>
+
+</head>
+<body id="welcomePageBody">
+<!--  Style declaration for nike. Probably not needed.  (AC) -->
+<style>
+.template {display:none}
+.include {display:none}
+</style>
+
+
+<div id="errortext"></div>
+
+<h1>&coscripter;</h1>
+<div class="introduction">
+<p>
+&coscripterDescription;
+</p>
+<p>
+&visitPre;
+<a href="javascript:openWikiPage()" id="coscripterwebsite">&coscripterWebsite;</a>
+&visitPost;
+</p>
+
+<form onsubmit="return searchScripts('&coscripterWebsite;', document.getElementById('scriptsearch').value);">
+<input id="scriptsearch" type="text"/><input class="coscripter-search" type="submit" value="&search;"/>
+</form>
+</div>
+
+<div id="loading">
+&loading;...
+</div>
+
+<div id="staticstart" style="display: none" class="introduction error">
+<p>
+&cantConnect;</p>
+</div>
+
+<div id="dynamicstart" style="display: none" class="scripts">
+<div id="recentlyTouchedDiv">
+<h1>&myRecentScripts;</h1>
+<ul id="recent" class="template" bind="recent" empty="&myRecentScripts.empty;">
+<li> <a bind="title" bindAttributes="href:coscript-json-url"></a></li>
+</ul>
+</div>
+
+<div id='favoritesDiv'>
+<h1>&favoriteScripts;</h1>
+<ul id="favorites" class="template" bind="favorites"
+    empty="&favoriteScripts.empty;">
+    <li> <a bind="title" bindAttributes="href:coscript-json-url"></a></li>
+</ul>
+</div>
+
+<div id='mineDiv'>
+<h1>&myScripts;</h1>
+<ul id="myscripts" class="template" bind="myscripts" empty="&myScripts.empty;">
+<li> <a bind="title" bindAttributes="href:coscript-json-url"></a></li> 
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript">
+<![CDATA[
+    try{
+	Components.utils.import("resource://coscripter-platform/component-registry.js");
+	var u = registry.utils();
+	var coscripter = u.getMainChromeWindow(window).coscripter;
+	
+	function cb_recent(successP, statuscode, data, template,
+	    login_url) {
+	    if (statuscode >= 200 && statuscode < 300) {
+		// don't do anything; it worked
+	    } else if (statuscode >= 400 && statuscode < 500) {
+		data = [{'title' : 'Log in to see your scripts',
+		    'coscript-json-url' : 
+		    'javascript:coscripter.loadUrlIntoMainBrowser("' + login_url + '")'}];
+	    } else {
+		data = [{'title' : 'Error reading from server: ' + statuscode}]
+	    }
+	    new IBM.ET4A.Template(template).bind(data);
+	}
+
+	function makeMoreLink(data, target_length, url) {
+	    // target length is 5
+	    // data length is anywhere from 0-6
+	    if (data.length > target_length) {
+		data = data.slice(0, target_length - 1);
+		data[data.length] = [{'title': '(more)',
+		    'coscript-json-url' :
+		    'javascript:coscripter.loadUrlIntoMainBrowser("' + url +
+		    '")'}];
+	    }
+	    return data;
+	}
+
+	coscripter.hasKoalescenceConnection(function(serverVars) {
+	    var loading = document.getElementById('loading');
+	    var staticstart = document.getElementById('staticstart');
+	    var dynamicstart = document.getElementById('dynamicstart');
+
+	    loading.style.display = 'none';
+	    if (!serverVars) {
+		staticstart.style.display = 'inline';
+		return;
+	    }
+	    Components.utils.import("resource://coscripter-platform/component-registry.js");
+            var u = registry.utils();
+
+	    var recent_url = u.getKoalescenceAPIFunction('recently_touched', 'limit=5');
+	    u.loadJSONWithStatus(recent_url,
+		function(successP, statuscode, data) {
+		    cb_recent(successP, statuscode, data.slice(), "recent",
+			serverVars['coscripter-login-url']);
+		}
+	    );
+
+	    var mine = u.getKoalescenceAPIFunction('person', 'limit=6');
+	    u.loadJSONWithStatus(mine,
+		function(successP, statuscode, data) {
+		    cb_recent(successP, statuscode,
+			makeMoreLink(data.slice(), 5,
+			    serverVars['coscripter-myscripts-url']),
+			"myscripts", serverVars['coscripter-login-url']);
+		}
+	    );
+
+	    var favorites = u.getKoalescenceAPIFunction('favorites');
+        u.loadJSONWithStatus(favorites,
+        function(successP, statuscode, data) {
+            cb_recent(successP, statuscode,
+            makeMoreLink(data.slice(), 5,
+                serverVars['coscripter-favorite-url']),
+            "favorites", serverVars['coscripter-login-url']);
+        }
+        );
+
+	    dynamicstart.style.display = 'inline';
+	})
+    }catch(e){
+	var errortext = document.getElementById('errortext');
+	errortext.innerHTML = 'Error: ' + e;
+	dump("Error in startpage: " + e.toSource() + "\n");
+    }
+    
+    function openWikiPage() { 
+    try{
+	        Components.utils.import("resource://coscripter-platform/component-registry.js");
+                var u = registry.utils();
+		var serverURL = u.getKoalescenceURL();
+		u.getCurrentContentBrowser(window).loadURI(serverURL);
+    }catch(e){
+		var errortext = document.getElementById('errortext');
+		errortext.innerHTML = 'Error: ' + e;
+		dump("Error in openWikiPage: " + e + "\n");
+    }
+    }
+]]>
+</script>
+
+</body>
+</html>

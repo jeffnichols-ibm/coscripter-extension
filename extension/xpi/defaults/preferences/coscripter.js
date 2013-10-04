@@ -1,0 +1,10 @@
+pref("coscripter.serverList", '[{"name":"Your Server","url":"http://yourserver.com/coscripter/"}]');
+pref("coscripter.defaultServer", 0);
+pref("coscripter.recordActionHistory", "1");
+pref("coscripter.showBubbleHelp", false);
+pref("coscripter.contextP", false);
+pref("coscripter.spreadsheetP", false);
+pref("coscripter.showMashupTables", true);
+pref("coscripter.saveLocal", 0);
+pref("coscripter.recordAllClicksP", false);
+pref("coscripter.recordDialogsP", false);

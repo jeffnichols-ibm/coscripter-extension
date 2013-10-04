@@ -1,0 +1,696 @@
+/* (C) Copyright IBM Corp. 2007 */
+/* ---------------------------------------------------------------------- */
+/* General settings */
+a:link {
+	color: #3366CC;
+}
+
+a:visited {
+	color: #6633CC;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+h1 {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;    
+    margin-top: 0px;
+}
+
+h2 {
+    font-size: 12pt;
+}
+
+p, pre {
+    text-align: left;	
+}
+
+.releasetext {
+	margin: 20px;
+}	
+.proctitle a {
+    font-size: .82em;
+    font-weight: bold;
+    text-decoration: none;
+}
+.proctitle a:hover {
+    text-decoration: underline;
+}
+
+.procinfo {
+    color: #666666;
+    font-size: .7em;
+}
+
+.procinfo a {
+    font-size: 1em;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.procinfo a:hover {
+    text-decoration: underline;
+}
+
+.ProcListLine {
+    background: inherit;
+}
+.ProcListLine_Private {
+    background-color: #f4d4e5;
+}
+
+.ProcListLine td, .ProcListLine_Private td {
+    border-top: 1px solid #CCCCCC;
+    padding: 5px 0 5px 14px;
+}
+
+.notice {
+    border: 1px solid #D7BD00;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #ffff99;
+    font-size: larger;
+}
+
+#news {
+    border: 2px solid red;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #ffffff;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: red;
+}
+
+#loginbar {
+    color: black;
+    text-align: right;
+    font: 10pt sans-serif;
+}
+
+.morelink {
+    text-align: right;
+}
+
+.comment {
+/*    background: #b7dcff; */
+   margin-bottom: 1.5em;
+}
+
+.comment-tagline {
+    font-size: 85%;
+    margin: 0.5em 0em;
+}
+
+/* These are for the two-column layouts on the Home page */
+.leftcolumn {
+    width: 50%;
+    float: left;
+}
+
+.leftcolumn_inner {
+    padding: 10px;
+}
+
+.rightcolumn {
+    width: 50%;
+    float: right;
+}
+
+.rightcolumn_inner {
+    padding: 10px;
+}
+
+#procedure-executes {
+    font-style: italic;
+}
+
+#procedure-body {
+    width: 100%;
+    margin-bottom: 3em;
+}
+
+#procedure-comments {
+    margin-top: 1em;
+    font-size: 85%;
+}
+
+#procedure-votes {
+    text-align: right;
+}
+
+.leftcolumn15 {
+    width: 15%;
+    float: left;
+    text-align: left;
+}
+.rightcolumn85 {
+    width: 82%;
+    float: left;
+    text-align: left;
+}
+
+.runButton:after {
+    content: "Run"
+}
+.loadButton:after {
+    content: "Open in Sidebar"
+}
+
+.help-div {
+    text-align: center;
+}
+.help-image {
+    margin: 4px 4px 4px 4px;
+    padding: 4px 4px 4px 4px;
+    border-width: 1px;
+    border-color: #99bbee;
+    border-style: solid;
+}
+
+.proc_metadata {
+    float: right;
+    text-align: right;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Procedure page */
+
+.leftcolumn20 {
+    width: 20%;
+    float: left;
+    text-align: left;
+}
+.rightcolumn80 {
+    width: 80%;
+    float: left;
+    text-align: left;
+    overflow: hidden;
+}
+
+.addtagpanel {
+    background-color: #e1edff;
+}
+
+.relatedpanel {
+    background-color: #f0f0f0;
+}
+
+.proc_actionbar {
+   margin-top: 1em;
+}
+
+table.proc_header_metadata {
+   border: 0px;
+   border-collapse: collapse;
+   border-style: hidden;
+   font-size: 77%;
+}
+
+table.proc_header_metadata tr {
+   vertical-align: top;
+}
+
+table.proc_header_metadata td {
+   border-left: 1px solid #cccccc;
+   padding-left: 0.5em;
+   padding-right: 0.5em;
+}
+
+table.proc_header_metadata table td {
+   border: none;
+   font-size: 77%;
+   padding-left: 0em;
+   padding-right: 0em;
+}
+
+table.proc_header_metadata table td img {
+   padding-right: 0.5em;
+}
+
+table.proc_header_metadata tr {
+   vertical-align: top;
+}
+
+table.proc_header_metadata table.rating td img {
+   padding-right: 0em;
+}
+
+/* ---------------------------------------------------------------------- */
+/* For the download box */
+.get-coscripter {
+    float: right;
+    width: 20%;
+    margin: 20px 0px 20px 20px;
+    padding: 0px 0px 0px 0px;
+    border-width: 1px;
+    border-color: #afc08d;
+    border-style: solid;
+}
+
+.get-coscripter2 {
+    background: #d0e4a7;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+.get-coscripter3 {
+    font-size: 8pt;
+}
+
+.get-coscripter4 {
+    font-size: 8pt;
+    font-weight: bold;
+}
+
+.get-coscripter5 {
+    font-size: 6pt;
+}
+
+.get-coscripter1 {
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 10pt;
+    float: right;
+    width: 80%;
+}
+
+.left30 {
+    float: left;
+    width: 30%;
+    background-color: transparent;
+}
+
+.right70 {
+    float: right;
+    width: 70%;
+    background-color: transparent;
+}
+
+.floatleft {
+    float: left;
+    width: 20%;
+}
+
+.margin5 {
+    margin: 5px 5px 5px 5px;
+}
+
+.padding5 {
+    padding: 5px 5px 5px 5px;
+}
+
+.atombutton {
+    margin-right: 5px;
+    float: left;
+}
+.atombutton img {
+    border: 0;
+}
+
+.tablesummary {
+    border-top: 1px solid #CCCCCC;
+    color: #333333;
+    font-size: .8em;
+    font-weight: bold;
+    margin: 15px 0;
+    padding-top: 10px;
+}
+
+.sortheader {
+    background: #e3e3e3;
+    padding: 5px;
+    font-size: 0.8em;
+}
+.sortheader a, .sortheader a:link, .sortheader a:visited {
+    color: #3366CC;
+}
+
+.pagination {
+    float: right;
+}
+
+.pagination_image img {
+    vertical-align: middle;
+}
+
+/* ---------------------------------------------------------------------- */
+/* For editors' picks on about page */
+.editorspicks1 {
+    float: right;
+    width: 45%;
+    margin: 20px 0px 20px 20px;
+    padding: 0px 0px 0px 0px;
+    border-width: 1px;
+    border-color: #98bfe8;
+    border-style: solid;
+}
+
+.editorspicks2 {
+    padding: 4px 4px 4px 4px;
+    margin: 0px 0px 0px 0px;
+    background-color: #98bfe8;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.proc_title {
+    color: #000000;
+    font-size: 8pt;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+}
+
+.proc_author {
+    color: #000000;
+    font-size: 8pt;
+    text-decoration: none;
+    padding: 0;
+    margin: 0 0 5px 0;
+}
+
+.snippet {
+    font-size: 9pt;
+    color: #666666;
+    margin: 3px 0px 3px 0px;
+    overflow: hidden;
+}
+
+/* ---------------------------------------------------------------------- */
+/* About page */
+.list1 {
+    line-height: 2em;
+}
+
+.downloadbutton {
+    padding: 20px 20px 20px 20px;
+    margin: 20px 20px 50px 20px;
+    float: right;
+    text-align: center;
+}
+
+
+/* Styles for new Koala web page: JN: 6/18/2007 */
+
+.content-area {
+	width: 75%;
+	margin: 0px auto;
+	color: #3e3e3e;
+	padding-top: 1em;
+}
+
+.heading-area {
+	text-align: left;
+	width: 75%;
+	margin: 0px auto;
+}
+
+.coscripter-heading-image {
+	text-align: left;
+	margin: 0px 0px;
+	margin-top: 20px;
+}
+
+.panel-row {
+	margin-top: 40px;
+	margin-bottom: 0px;	
+}
+
+
+.coscripter-panel-heading {
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 6px;
+	margin-bottom: 6px;	
+}
+
+.coscripter-panel-body {
+	font-size: 11px;
+	font-weight: normal;
+	margin-top: 0px;
+	margin-bottom: 3px;
+	vertical-align: middle;
+}
+
+.text-below {
+	margin-left: 3px;
+	margin-top: 9px;	
+}
+	
+img.small-icon {
+	vertical-align: middle;
+	margin-right: 2px;	
+}
+
+hr.coscripter-divider {
+	clear: both;	
+	height: 1px;
+	margin-bottom: 40px;
+}
+
+.coscripter-sidebar {
+	float: right;
+	width: 50%;
+	margin: 0px 15px 50px 5%;
+	text-align: left;
+}
+
+.coscripter-search {
+	background: #c6ddff;
+	font-size: small;
+	padding: 5px 20px;
+	margin-bottom: 5px;
+}
+
+#coscripter-search-body-textbox {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	padding: 0 5px;
+	width: 70%;
+}
+
+#coscripter-search-body-button {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	padding: 0;	
+	width: 25%;
+}
+
+.recommended-scripts {
+	padding: 5px 20px;
+
+}
+
+.other-coscripter-content {
+	text-align: left;
+}
+
+.helptext {
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.helpimage {
+    
+}
+
+/* (C) Copyright IBM Corp. 2007 */
+body, html {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	background-image: url('/skin/images/vertical-gradient.png');
+	background-repeat: repeat-x;
+	text-align: center;  /* to make the main area centered in IE */
+}
+
+input {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: .7em;
+	padding: 0 5px;
+}
+
+.main-area-with-shadows {
+/*	width: 900px;*/
+	margin: 0px auto;	
+	background-color: transparent;
+}
+
+.main-coscripter-area {
+/*	width: 890px;*/
+	margin: 0px auto;	
+	background-color: #f9f9fa;
+}
+
+.leftShadow {
+	float: left;
+	width: 5px; 
+	height: 2000px;
+	background-color: transparent;
+	background-image: url('/skin/images/right-to-left-shadow.png');
+	background-repeat: repeat-y;
+}
+
+.rightShadow {
+	float: right;
+	width: 5px; 
+	height: 2000px;
+	background-color: transparent;
+	background-image: url('/skin/images/left-to-right-shadow.png');
+	background-repeat: repeat-y;
+}
+
+.header-menu-spacer {
+	background: #FFFFFF; 
+	line-height: 0;
+	height: 5px;	
+}
+
+.banner {
+	background-color: #748195;
+	clear: right;
+	margin-top: 1px;
+	top: 1px;
+}
+
+.banner-image {
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align: bottom;
+	width: 112px;
+}
+
+.footer {
+	background-color: #748195;
+	text-align: center;  /* to make the main area centered in IE */
+	margin-top: 30px;
+	font-size: 0.8em;
+	padding: 0.5em;
+	color: white;
+}
+
+.footer a:link, .footer a:visited {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+.footer a:hover, .footer a:visited:hover {
+	background: #939fb2;
+}
+
+input.search {
+  font-weight: bold;
+  color: #ffffff;
+  background: #939fb2;
+  margin: 0;
+  padding: 0.1em;
+  border-top: 1px solid white;
+  border-bottom: 1px solid black;
+  border-left: 1px solid white;
+  border-right: 1px solid black;
+}
+
+input.search:active {
+  border-top: 1px solid black;
+  border-bottom: 1px solid white;
+  border-left: 1px solid black;
+  border-right: 1px solid white;
+}
+
+.top-menus {
+	color: white;
+	font-size: 0.8em;
+	font-weight: bold;
+	margin-left: 10px;
+}
+.top-menus a:link, .top-menus a:visited {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px;
+}
+.top-menus a:hover, .top-menus a:visited:hover {
+	background: #939fb2;
+}
+.about-menus {
+	font-size: 80%;
+	padding-top: 0.25em;
+	padding-right: 10px;
+}
+.about-menus a:link, .about-menus a:visited {
+	padding: 3px;
+}
+
+.search-area {
+	padding-right: 10px;
+}
+
+.search-area, .search-area form, .search-area input {
+	vertical-align: middle;
+}
+
+.search-area form {
+    margin: 0px;
+}
+
+.person_menu {
+	font-size: 80%;
+}
+
+.edit_text {
+    width: 66%;
+    float: left;
+}
+
+.edit_text_inner {
+    padding: 10px;
+}
+
+.edit_instructions {
+    width: 34%;
+    float: right;
+}
+
+.edit_instructions_inner {
+    padding: 10px;
+}
+
+#firefox_install_help {
+    position: fixed;
+    top: 0;
+    right: 0px;
+    background: #ffff99;
+    width: 250px;
+    border: solid #9D9DA1;
+    border-width: 0 0 1px 1px;
+    padding: 0 1em 0 1em;
+}
+
+#firefox_install_help ol {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#firefox_install_help li {
+    margin-bottom: 0.5em;
+}
+
+.blog-entry{
+
+}
+.blog-entry-title{
+    font-weight: bold;
+}
+.blog-author{
+}
+.blog-date{
+}
+
+.tostext {
+    padding-left: 3em;
+    padding-right: 3em;
+}

@@ -1,0 +1,4 @@
+content yule content/
+locale yule en-US locale/en-US/
+
+resource yule modules/

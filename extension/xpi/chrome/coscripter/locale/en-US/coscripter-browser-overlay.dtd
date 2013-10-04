@@ -1,0 +1,6 @@
+<!ENTITY coscripter.label "CoScripter">
+<!ENTITY coscripterMenuItem.accesskey "c">
+<!ENTITY coscripterMenuItem.accesskeylabel "Ctrl+Alt+C">
+<!ENTITY toggleCoScripterSidebar "Toggle CoScripter sidebar">
+<!ENTITY extractScript "Import instructions into CoScripter">
+<!ENTITY clipNode "Clip content into CoScript"> <!-- make sure this is the same as 'clipNode' in coscripter-sidebar.properties-->

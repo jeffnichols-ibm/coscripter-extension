@@ -1,0 +1,23 @@
+<!ENTITY welcome.title "Welcome to CoScripter!">
+<!ENTITY coscripter "CoScripter">
+<!ENTITY coscripterDescription "CoScripter is a system for recording, automating, and sharing scripts to do things on the web.">
+<!ENTITY visitPre "Visit the ">
+<!ENTITY coscripterWebsite "CoScripter website">
+<!ENTITY visitPost " to learn more.">
+<!ENTITY loading "Loading">
+<!ENTITY cantConnect "CoScripter could not connect to the server!  This problem is probably
+temporary.  Try closing the CoScripter sidebar and reopening it.">
+<!ENTITY myRecentScripts "My recent scripts">
+<!ENTITY myRecentScripts.empty "Click 'New' to create one">
+<!ENTITY myScripts "My scripts">
+<!ENTITY myLocalScripts "My local scripts">
+<!ENTITY myScripts.empty "Click 'New' to create one">
+<!ENTITY relevantScripts "Relevant scripts">
+<!ENTITY relevantScripts.empty "No scripts reference this webpage">
+<!ENTITY editorsPicks "Editors' Picks">
+<!ENTITY editorsPicks.empty "No editors' picks have been defined">
+<!ENTITY favoriteScripts "Favorite scripts">
+<!ENTITY favoriteScripts.empty "You have no favorite scripts">
+<!ENTITY doubleClickToEdit "Single-click to edit">
+<!ENTITY search "Search">
+
